@@ -35,6 +35,8 @@
       connected[i] = false
     end
 
+    context("\\startMPcode")
+
     for i, p in ipairs(points) do
       local x1, y1 = unpack(p)
 
@@ -69,20 +71,18 @@
         context("fill fullcircle scaled 0.6 shifted (%f, %f) ;", x1, y1)
       end
     end
+
+    context("\\stopMPcode")
+
   end
 \stopluacode
 
 \starttexdefinition nospaces Indra
-  \start\mbox{~}\vfill
-  \startframed[frame=off,offset=\zeropoint,strut=no]
-  \scale[width=\textwidth]{
-    \rotate[rotation=45]{
-      \startluacode
-        context("\\startMPcode")
-        indraNet()
-        context("\\stopMPcode")
-      \stopluacode
-    }
-  }\stopframed
-  \par\vfill\stop\page
+  \start
+    \mbox{~}\vfill
+    \startframed[frame=off,offset=\zeropoint,strut=no]
+      \scale[width=\textwidth]{\rotate[rotation=45]{\ctxlua{indraNet()}}}
+    \stopframed
+    \par\vfill
+  \stop\page
 \stoptexdefinition

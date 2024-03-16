@@ -115,11 +115,12 @@ system          >   36: filename=mp-text.mpxl filetype=mp foundname=/home/andi/A
 system          >   37: filename=lpdf-pdx.xml filetype=tex foundname=/home/andi/Apps/lmtx/tex/texmf-context/tex/context/base/mkiv/lpdf-pdx.xml fullname=/home/andi/Apps/lmtx/tex/texmf-context/tex/context/base/mkiv/lpdf-pdx.xml usedmethod=database
 system          > stop used files
 system          > start commandline options
-system          >   currentrun="2"
+system          >   currentrun="1"
 system          >   fulljobname="./indra.mkxl"
 system          >   input="./indra.mkxl"
-system          >   kindofrun="2"
+system          >   kindofrun="1"
 system          >   maxnofruns="9"
+system          >   parallel="true"
 system          >   texmfbinpath="/home/andi/Apps/lmtx/tex/texmf-linux-64/bin"
 system          > stop commandline options
 system          > start commandline files
@@ -139,24 +140,24 @@ system          >   min     150000   10000000     150000     150000    2000000  
 system          >   set     500000   10000000     250000     250000   50000000   10000000   10000000     100000       2000      10000     100000     500000     100000        250        250        250
 system          >   stp     100000    1000000     100000     100000     500000     250000    1000000      10000        250       1000      10000      10000        250        250         50         25
 system          > 
-system          >   mem     150000     978251     150000               2000000    1000000    1000000      10000        500       1000      20000      10000    7348208         96       1200        320
-system          >   all    2400000     978251    2400000              18000000    8000000    1000000     320000      16000      88000      80000     160000    7348208         96      28800      10240
+system          >   mem     150000     978262     150000               2000000    1000000    1000000      10000        500       1000      20000      10000    7348016         96       1200        320
+system          >   all    2400000     978262    2400000              18000000    8000000    1000000     320000      16000      88000      80000     160000    7348016         96      28800      10240
 system          > 
 system          >   ini    2146300     933149          0      49131          0     544567                                                                                       0                      
-system          >   ptr      51079                 10424      51062                604437          0          5          0          0          0          0         19          0          0          8
-system          >   top      51080                807100     131074       6064     913531        363         40          9         12         41        258        250        250         50         10
+system          >   ptr      51080                 10425      51063                604394          0          5          0          0          0          0         19          0          0          8
+system          >   top      51081                807100     131074       6064     913432        363         40          9         12         41        258        250        250         50         10
 system          >   -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 system          > 
 system          >   current input type    : initial
 system          > 
-system          >   approximate memory    : 44272035 (42 MB)
+system          >   approximate memory    : 44271854 (42 MB)
 system          > 
 system          >   expansion depth       : min: 10000, max: 1000000, set: 10000, top: 6
 system          > 
 system          >   luabytecode registers : 1017
 system          >   luabytecode bytes     : 16288 (0 MB)
-system          >   luastate bytes now    : 53776500 (51 MB)
-system          >   luastate bytes max    : 117171707 (111 MB)
+system          >   luastate bytes now    : 53973578 (51 MB)
+system          >   luastate bytes max    : 117199394 (111 MB)
 system          > 
 system          >   file callbacks        : 473
 system          >   saved callbacks       : 7353
@@ -179,8 +180,8 @@ system          >   backend callbacks     : 0
 system          > 
 mkiv lua stats  > used config file: selfautoparent:/texmf/web2c/texmfcnf.lua
 mkiv lua stats  > used cache path: /home/andi/Apps/lmtx/tex/texmf-cache/luametatex-cache/context/5fe67e0bfe781ce0dde776fb1556f32e
-mkiv lua stats  > resource resolver: loadtime 0.005 seconds, 1 scans with scantime 0.002 seconds, 0 shared scans, 37 found files, scanned paths: /home/andi/texmf
-mkiv lua stats  > stored bytecode data: 517 modules (0.182 sec), 104 tables (0.006 sec), 621 chunks (0.188 sec)
+mkiv lua stats  > resource resolver: loadtime 0.007 seconds, 1 scans with scantime 0.002 seconds, 0 shared scans, 37 found files, scanned paths: /home/andi/texmf
+mkiv lua stats  > stored bytecode data: 517 modules (0.165 sec), 104 tables (0.006 sec), 621 chunks (0.171 sec)
 mkiv lua stats  > traced context: maxstack: 1763, freed: 2, unreachable: 1761
 mkiv lua stats  > cleaned up reserved nodes: 74 nodes, 7 lists of 437
 mkiv lua stats  > node memory usage: 9 attribute, 2 glue, 132 gluespec, 1 kern, 661 mathspec, 3 penalty, 2 temp
@@ -193,14 +194,14 @@ mkiv lua stats  > randomizer: resumed with value 0.87930250047076
 mkiv lua stats  > loaded tex modules: 1 requested, all found (*-fullpage)
 mkiv lua stats  > loaded patterns: en::1, load time: 0.000
 mkiv lua stats  > loaded fonts: 3 files: latinmodernmath-companion.otf, latinmodern-math.otf, lmroman10-regular.otf
-mkiv lua stats  > font engine: otf 3.141, afm 1.540, tfm 1.000, 13 instances, 8 shared in backend, 4 common vectors, 4 common hashes, load time 0.150 seconds 
-mkiv lua stats  > metapost: 0.150 seconds, loading: 0.024, execution: 0.142, n: 48, average: 0.007, instances: 1, luacalls: 14918 (file: 14199, text: 0, script: 430, log: 289), memory: 4.050 M
-mkiv lua stats  > math tweaking time: 0.059 seconds, 12 math goodie tables
+mkiv lua stats  > font engine: otf 3.141, afm 1.540, tfm 1.000, 13 instances, 8 shared in backend, 4 common vectors, 4 common hashes, load time 0.147 seconds 
+mkiv lua stats  > metapost: 0.160 seconds, loading: 0.025, execution: 0.151, n: 48, average: 0.007, instances: 1, luacalls: 14918 (file: 14199, text: 0, script: 430, log: 289), memory: 4.050 M
+mkiv lua stats  > math tweaking time: 0.060 seconds, 12 math goodie tables
 mkiv lua stats  > font embedding time: 0.001 seconds, 1 fonts
 mkiv lua stats  > result saved in file: indra.pdf, compresslevel 1, objectcompresslevel 3, 51 streams, 0 uncompressed, 49 compressed, 2 not compressed, threshold 40
 mkiv lua stats  > positions: 4 collected, 0 deltas, 0 shared partials, 0 partial entries
 mkiv lua stats  > used platform: linux-64, type: unix, binary subtree: texmf-linux-64
 mkiv lua stats  > used engine: luametatex version: 2.11.02, functionality level: 20240308, format id: 700, compiler: gcc
-mkiv lua stats  > tex properties: 807100 hash slots used of 2097152, 51062 control sequences, approximate memory usage: 42 MB
+mkiv lua stats  > tex properties: 807100 hash slots used of 2097152, 51063 control sequences, approximate memory usage: 42 MB
 mkiv lua stats  > lua properties: engine: lua 5.5, used memory: 57 MB, ctx: 51 MB, max: 111 MB, symbol mask: utf (τεχ)
-mkiv lua stats  > runtime: 61.379 seconds, 46 processed pages, 46 shipped pages, 0.749 pages/second
+mkiv lua stats  > runtime: 61.084 seconds, 46 processed pages, 46 shipped pages, 0.753 pages/second
