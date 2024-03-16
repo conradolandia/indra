@@ -3,14 +3,38 @@
 
 \usemodule[fullpage][style={in,headings}]
 
+\definefontfeature  [default][default]
+                    [script=latn,
+                    protrusion=punctuation,
+                    itlc=yes,
+                    textitalics=yes,
+                    kern=yes,
+                    liga=yes,
+                    case=yes,
+                    onum=yes]
+
+\definefontfeature  [smallcaps][smallcaps]
+                    [smcp=yes,
+                    cpsp=yes,
+                    c2sc=yes]
+
+\setupbodyfontenvironment[default][em=italic]
+\setupitaliccorrection[global,always]
+\loadtypescriptfile[ebgaramond]
+\setupbodyfont[ebgaramond]
+\setupalign[hz,hanging,tolerant]
+\setupcapitals[sc=yes]
+
 \startluacode
   local pentagram = 5
   local spell = 0.24716
   local magic = 7
   local grimoire = 111
-  local arcane = 26
+  local arcane = 13
   local key = 52
   local meditation = 12
+
+  math.randomseed(os.time())
 
   function generateRandomseed(n)
     local x = math.random(1, n)
@@ -22,7 +46,7 @@
     points = {}
     connected = {}
 
-    generateRandomseed(magic * pentagram)
+    generateRandomseed(magic * pentagram + os.time())
 
     function dist2(x1, y1, x2, y2)
       return (x2 - x1)^2 + (y2 - y1)^2
@@ -77,12 +101,15 @@
   end
 \stopluacode
 
-\starttexdefinition nospaces Indra
-  \start
-    \mbox{~}\vfill
+\starttexdefinition nospaces doIndra [#1]
+  \start\mbox{}\vfill
     \startframed[frame=off,offset=\zeropoint,strut=no]
       \scale[width=\textwidth]{\rotate[rotation=45]{\ctxlua{indraNet()}}}
     \stopframed
-    \par\vfill
+    \doifsomethingelse{#1}
+      {\vfill\centerline{\sc #1}}
+      {\vfill}
   \stop\page
 \stoptexdefinition
+
+\def\Indra{\dosingleempty\doIndra}

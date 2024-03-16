@@ -2,4 +2,5 @@
 
 \startdocument
   \dorecurse{46}{\Indra}
+  %\Indra[Omnia vincit amor]
 \stopdocument
