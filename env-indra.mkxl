@@ -26,19 +26,19 @@
 \setupcapitals[sc=yes]
 
 \startluacode
-  local pentagram = 5
-  local spell = 0.24716
-  local magic = 7
-  local grimoire = 111
-  local arcane = 13
-  local key = 52
-  local meditation = 12
+  Pentagram = 5
+  Spell = 0.24716
+  Magic = 7
+  Grimoire = 111
+  Stones = 13
+  Keys = 52
+  Runes = 24
 
   math.randomseed(os.time())
 
   function generateRandomseed(n)
     local x = math.random(1, n)
-    local y = math.random(x, x*n)
+    local y = math.random(x, x * n)
     return math.randomseed(math.random(x, y))
   end
 
@@ -46,17 +46,20 @@
     points = {}
     connected = {}
 
-    generateRandomseed(magic * pentagram + os.time())
+    generateRandomseed(Magic * Pentagram + os.time())
 
     function dist2(x1, y1, x2, y2)
       return (x2 - x1)^2 + (y2 - y1)^2
     end
 
-    for i = 1, math.random(magic * arcane, magic * key) do
-      local x = math.random(1, magic * meditation)
-      local y = math.random(1, magic * meditation)
-      table.insert(points, {x, y})
-      connected[i] = false
+    for i = 1, math.random(Magic * Stones, Magic * Keys) do
+      local x = math.random(1, Magic * Runes)
+      local y = math.random(1, Magic * Runes)
+      local luck = math.random(1,3)
+      if luck % 2 == 0 or luck % 3 == 0 then
+        table.insert(points, {x, y})
+        connected[i] = false
+      end
     end
 
     context("\\startMPcode")
@@ -70,7 +73,7 @@
           local drawEdge = false
           local midX, midY = (x1 + x2) / 2, (y1 + y2) / 2
           local dist_ij = dist2(x1, y1, x2, y2)
-          local min_dist_k = magic * grimoire
+          local min_dist_k = Magic * Grimoire
 
           for k, r in ipairs(points) do
             if k ~= i and k ~= j then
@@ -80,8 +83,8 @@
             end
           end
 
-          if min_dist_k > spell * dist_ij then
-            context("draw (%f, %f)--(%f, %f) withpen pencircle scaled 0.1 ;", x1, y1, x2, y2)
+          if min_dist_k > Spell * dist_ij then
+            context("draw (%f, %f) -- (%f, %f) withpen pencircle scaled 0.25 ;", x1, y1, x2, y2)
             connected[i] = true
             connected[j] = true
           end
@@ -92,7 +95,7 @@
     for i, p in ipairs(points) do
       if connected[i] then
         local x1, y1 = unpack(p)
-        context("fill fullcircle scaled 0.6 shifted (%f, %f) ;", x1, y1)
+        context("fill fullcircle scaled 0.5 shifted (%f, %f) ;", x1, y1)
       end
     end
 
