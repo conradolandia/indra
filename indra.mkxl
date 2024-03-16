@@ -1,0 +1,5 @@
+\environment env-indra
+
+\startdocument
+  \dorecurse{46}{\Indra}
+\stopdocument

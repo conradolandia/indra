@@ -1,0 +1,88 @@
+\definepapersize[octavo][width=25cm,height=35cm]
+\setuppapersize[octavo]
+
+\usemodule[fullpage][style={in,headings}]
+
+\startluacode
+  local pentagram = 5
+  local spell = 0.24716
+  local magic = 7
+  local grimoire = 111
+  local arcane = 26
+  local key = 52
+  local meditation = 12
+
+  function generateRandomseed(n)
+    local x = math.random(1, n)
+    local y = math.random(x, x*n)
+    return math.randomseed(math.random(x, y))
+  end
+
+  function indraNet()
+    points = {}
+    connected = {}
+
+    generateRandomseed(magic * pentagram)
+
+    function dist2(x1, y1, x2, y2)
+      return (x2 - x1)^2 + (y2 - y1)^2
+    end
+
+    for i = 1, math.random(magic * arcane, magic * key) do
+      local x = math.random(1, magic * meditation)
+      local y = math.random(1, magic * meditation)
+      table.insert(points, {x, y})
+      connected[i] = false
+    end
+
+    for i, p in ipairs(points) do
+      local x1, y1 = unpack(p)
+
+      for j, q in ipairs(points) do
+        if i < j then
+          local x2, y2 = unpack(q)
+          local drawEdge = false
+          local midX, midY = (x1 + x2) / 2, (y1 + y2) / 2
+          local dist_ij = dist2(x1, y1, x2, y2)
+          local min_dist_k = magic * grimoire
+
+          for k, r in ipairs(points) do
+            if k ~= i and k ~= j then
+              local x3, y3 = unpack(r)
+              local dist_k = dist2(midX, midY, x3, y3)
+              min_dist_k = math.min(min_dist_k, dist_k)
+            end
+          end
+
+          if min_dist_k > spell * dist_ij then
+            context("draw (%f, %f)--(%f, %f) withpen pencircle scaled 0.1 ;", x1, y1, x2, y2)
+            connected[i] = true
+            connected[j] = true
+          end
+        end
+      end
+    end
+
+    for i, p in ipairs(points) do
+      if connected[i] then
+        local x1, y1 = unpack(p)
+        context("fill fullcircle scaled 0.6 shifted (%f, %f) ;", x1, y1)
+      end
+    end
+  end
+\stopluacode
+
+\starttexdefinition nospaces Indra
+  \start\mbox{~}\vfill
+  \startframed[frame=off,offset=\zeropoint,strut=no]
+  \scale[width=\textwidth]{
+    \rotate[rotation=45]{
+      \startluacode
+        context("\\startMPcode")
+        indraNet()
+        context("\\stopMPcode")
+      \stopluacode
+    }
+  }\stopframed
+  \par\vfill\stop\page
+\stoptexdefinition
